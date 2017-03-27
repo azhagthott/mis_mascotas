@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.desafiolatam.mismascotas.R;
 import com.desafiolatam.mismascotas.adapter.MyPetsListFirebaseAdapter;
@@ -41,7 +42,6 @@ public class MyPetsActivity extends AppCompatActivity implements PetUpdater {
 
         mainRecyclerView.setLayoutManager(linearLayoutManager);
         mainRecyclerView.setAdapter(adapter);
-
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +104,8 @@ public class MyPetsActivity extends AppCompatActivity implements PetUpdater {
 
     @Override
     public void delete() {
+
+        Toast.makeText(this, "Mascota eliminada", Toast.LENGTH_SHORT).show();
 
     }
 

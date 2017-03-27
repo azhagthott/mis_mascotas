@@ -2,7 +2,9 @@ package com.desafiolatam.mismascotas.adapter;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -53,6 +55,39 @@ public class MyPetsListFirebaseAdapter extends FirebaseRecyclerAdapter<Pet, MyPe
                 intent.putExtra(PET_NAME, pet.getName());
                 intent.putExtra(PET_URL_PHOTO, pet.getUrlPhoto());
                 v.getContext().startActivity(intent);
+            }
+        });
+
+        holder.petSelectorCardView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                new AlertDialog.Builder(context)
+                        .setTitle("¿desea aliminar la mascota?")
+                        .setMessage("Si elimina la mascota de la lista, tambien morirá en la vida real")
+                        .setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                String key = pet.getId();
+
+                                new Nodes().petByUid(uid).child(key).removeValue();
+                                new Nodes().allPets().child(key).removeValue();
+
+                                notifyDataSetChanged();
+
+                                update.delete();
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        })
+                        .show();
+
+                return true;
             }
         });
 

@@ -162,10 +162,36 @@ public class PetProfileActivity extends AppCompatActivity implements PhotoCallba
 
         Pet pet = new Pet();
 
-        pet.setName(nameEditText.getText().toString());
-        pet.setGender(genderEditText.getText().toString());
-        pet.setSpecie(specieEditText.getText().toString());
-        pet.setColor(colorEditText.getText().toString());
+
+        String name = nameEditText.getText().toString();
+        String gender = genderEditText.getText().toString();
+        String specie = specieEditText.getText().toString();
+        String color = colorEditText.getText().toString();
+
+        if (name.trim().length() == 0) {
+            nameEditText.setError("Ingrese un nombre");
+        } else {
+            pet.setName(nameEditText.getText().toString());
+        }
+
+        if (gender.trim().length() == 0) {
+            genderEditText.setError("Ingrese un genero");
+        } else {
+            pet.setGender(genderEditText.getText().toString());
+        }
+
+        if (specie.trim().length() == 0) {
+            specieEditText.setError("Ingrese una especie");
+        } else {
+            pet.setSpecie(specieEditText.getText().toString());
+        }
+
+        if (color.trim().length() == 0) {
+            colorEditText.setError("Ingrese un color");
+        } else {
+            pet.setColor(colorEditText.getText().toString());
+        }
+
         pet.setId(key);
         pet.setUrlPhoto(path);
         pet.setRemoteUrlPhoto(publicUrlPhoto);

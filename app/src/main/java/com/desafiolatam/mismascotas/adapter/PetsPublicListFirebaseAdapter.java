@@ -32,12 +32,15 @@ public class PetsPublicListFirebaseAdapter extends FirebaseRecyclerAdapter<Pet, 
     @Override
     protected void populateViewHolder(final PetHolder holder, final Pet pet, final int position) {
 
-        holder.setName(pet.getName());
-        holder.setSpecie(pet.getSpecie());
-        holder.setGender(pet.getGender());
+        if (pet != null) {
 
-        if (pet.getUrlPhoto().trim().length() != 0) {
-            holder.setPhoto(context, pet.getUrlPhoto());
+            holder.setName(pet.getName());
+            holder.setSpecie(pet.getSpecie());
+            holder.setGender(pet.getGender());
+
+            if (pet.getUrlPhoto().trim().length() != 0) {
+                holder.setPhoto(context, pet.getUrlPhoto());
+            }
         }
     }
 
