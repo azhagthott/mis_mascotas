@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements PetUpdater {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        toolbar.setTitle(R.string.app_name);
-
         findViews();
 
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

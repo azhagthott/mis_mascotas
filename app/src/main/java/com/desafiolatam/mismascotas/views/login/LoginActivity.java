@@ -2,6 +2,7 @@ package com.desafiolatam.mismascotas.views.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -9,6 +10,7 @@ import com.desafiolatam.mismascotas.R;
 import com.desafiolatam.mismascotas.views.MainActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.ErrorCodes;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Arrays;
 
@@ -21,15 +23,25 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setProviders(Arrays.asList(
-                                new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
-                                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
-                        ))
-                        .build(),
-                RC_SIGN_IN);
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        } else {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setProviders(Arrays.asList(
+                                            new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                                            new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()
+                                    ))
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }, 3500);
+        }
     }
 
     @Override
@@ -45,6 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
             }
         }
         if (resultCode == RESULT_CANCELED) {
+            finish();
             return;
         }
 
@@ -55,7 +68,6 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
     @Override
     public void init() {
-
     }
 
     @Override
