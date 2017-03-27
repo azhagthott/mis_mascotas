@@ -1,0 +1,58 @@
+{
+  "project_info": {
+    "project_number": "330253477087",
+    "firebase_url": "https://mis-mascotas-e097b.firebaseio.com",
+    "project_id": "mis-mascotas-e097b",
+    "storage_bucket": "mis-mascotas-e097b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:330253477087:android:e994800653cf8c5b",
+        "android_client_info": {
+          "package_name": "com.desafiolatam.mismascotas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "330253477087-aakgi124pvmt1abook3323vag4rpbrd2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.desafiolatam.mismascotas",
+            "certificate_hash": "6ba92750fee9fb9b51c7b0f21a46649cad9d2599"
+          }
+        },
+        {
+          "client_id": "330253477087-421shn711vjhs3nu2ie2i3b4flcrqm1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGDcAjnMR4HkiIhUhcY_HSejqnK5x7nZI"
+        },
+        {
+          "current_key": "AIzaSyDcNHlC6x-eyQcUWcSXmimIlh9qm7k4_Ag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "330253477087-421shn711vjhs3nu2ie2i3b4flcrqm1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
